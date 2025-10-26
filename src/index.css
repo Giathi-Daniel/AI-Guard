@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Professional Financial Dark Theme - AI-Guard */
+    --background: 210 40% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 210 40% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 210 40% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary: Teal/Cyan - Professional Financial Accent */
+    --primary: 180 85% 45%;
+    --primary-foreground: 210 40% 10%;
+    --primary-hover: 180 85% 50%;
+
+    /* Secondary: Dark Blue Background */
+    --secondary: 210 40% 12%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 12%;
+    --muted-foreground: 210 20% 65%;
+
+    /* Accent: Bright Teal - CTAs and Highlights */
+    --accent: 180 85% 45%;
+    --accent-foreground: 210 40% 10%;
+    --accent-hover: 180 85% 50%;
+
+    /* Status Colors - Semantic Indicators */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 40% 15%;
+    --input: 210 40% 15%;
+    --ring: 180 85% 45%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(210 50% 10%), hsl(180 85% 45%));
+    --gradient-card: linear-gradient(180deg, hsl(210 40% 8%), hsl(210 40% 10%));
+    
+    /* Shadows */
+    --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.2);
+    --shadow-elevated: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 20px hsla(180, 85%, 45%, 0.3);
+
+    /* Sidebar - Glassmorphism */
+    --sidebar: 222 47% 11% / 0.7;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 193 100% 37%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 216 34% 17%;
+    --sidebar-border: 215 28% 17% / 0.3;
+    
+    --sidebar-background: 210 40% 8% / 0.7;
+    --sidebar-ring: 180 85% 45%;
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Smooth transitions */
+  button, a {
+    transition: var(--transition-smooth);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .card-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .card-glow {
+    @apply bg-card/50 backdrop-blur-sm border-primary/20;
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.15);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .card-glow:hover {
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.25);
+  }
+
+  .glass-sidebar {
+    @apply bg-sidebar/70 backdrop-blur-xl border-r border-primary/20;
+    background-image: 
+      linear-gradient(135deg, rgba(6, 182, 212, 0.03) 0%, rgba(99, 102, 241, 0.03) 100%),
+      radial-gradient(ellipse at top left, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+  }
+
+  .cyber-grid {
+    background-image: 
+      linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  /* Cyber animation effects */
+  @keyframes cyber-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(6, 182, 212, 0.6); }
+  }
+  
+  .cyber-pulse {
+    animation: cyber-pulse 2s ease-in-out infinite;
+  }
+
+  /* Custom Scrollbar Styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, hsl(var(--primary)), hsl(var(--accent)));
+    border-radius: 10px;
+    border: 2px solid hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, hsl(var(--primary-hover)), hsl(var(--accent-hover)));
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary)) hsl(var(--background));
+  }
+}
