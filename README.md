@@ -1,2 +1,2 @@
-# AI-Guard - Hackathon Prototype
+# Welcome to AI-Guard - Hackathon Prototype
 ![preview-image](preview.png)
